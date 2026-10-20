@@ -1,0 +1,2792 @@
+/* ---------------------------------------------------------------- */
+/* Orbitant brand tokens (2026-10-15), from the "Orbitant Design      */
+/* System Slides" artifact. Three backgrounds only: Void, Stellar,    */
+/* Plasma. Eyebrows in Frozen Blue. Lines always grey. No shadows.    */
+/* Fonts bundled locally: Satoshi (Fontshare licence) and IBM Plex    */
+/* Sans / Condensed (OFL).                                            */
+/* ---------------------------------------------------------------- */
+@font-face { font-family: "Satoshi"; src: url("fonts/Satoshi-Regular.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Satoshi"; src: url("fonts/Satoshi-Medium.otf") format("opentype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans"; src: url("fonts/IBMPlexSans-Regular.ttf") format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Condensed"; src: url("fonts/IBMPlexSansCondensed-Medium.ttf") format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "IBM Plex Sans Condensed"; src: url("fonts/IBMPlexSansCondensed-Bold.ttf") format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+
+:root {
+  /* Backgrounds: the only three */
+  --void: #0d0d0d;
+  --stellar: #f5f5f5;
+  --plasma: #4567ed;
+  /* Text on dark */
+  --fg-1: #f5f5f5;
+  --fg-2: #bfbfbf;
+  --fg-3: #8c8c8c;
+  --fg-4: #666666;
+  --fg-footer: #595959;
+  /* Brand accents (max two per slide) */
+  --lavender: #7c87f7;
+  --frozen: #24c1cc;
+  --quantum: #24cc83;
+  /* Lines: always grey */
+  --line-1: #2a2a2a;
+  --line-2: #262626;
+  --line-3: #1f1f1f;
+  --line-light: #d9d9d9;
+  /* Semantic */
+  --accent: var(--plasma);
+  --eyebrow: var(--frozen);
+  --live: var(--quantum);
+  --ink: var(--fg-1);
+  --ink-2: var(--fg-2);
+  --ink-3: var(--fg-3);
+  --hair: var(--line-2);
+  /* Families */
+  --font-display: "IBM Plex Sans", sans-serif;            /* UPPERCASE, cover and dividers only */
+  --font-body: "Satoshi", sans-serif;                      /* headings 500, reading text 400 */
+  --font-condensed: "IBM Plex Sans Condensed", sans-serif; /* eyebrows, labels, figures */
+  --mono: var(--font-condensed);
+}
+
+/* Reveal theme overrides: Void background, Satoshi everywhere */
+.reveal-viewport,
+body {
+  background: var(--void);
+  background-color: var(--void);
+}
+
+.reveal {
+  font-family: var(--font-body);
+  color: var(--fg-1);
+}
+
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.reveal .controls {
+  color: var(--fg-4);
+}
+
+.reveal .progress {
+  color: var(--accent);
+}
+
+/* Primary accent color */
+.gs-text {
+  color: var(--accent);
+}
+
+.primary-text {
+  color: var(--accent);
+}
+
+/* Secondary accent colors */
+.secondary-text {
+  color: var(--lavender);
+}
+
+.mr-red-text {
+  color: #e6194b;
+}
+
+.mr-blonde-text {
+  color: #ffe119;
+}
+
+.mr-green-text {
+  color: #3cb44b;
+}
+
+.mr-blue-text {
+  color: #4363d8;
+}
+
+.mr-pink-text {
+  color: #e6beff;
+}
+
+/* List styling */
+li {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+li span {
+  color: var(--fg-1);
+}
+
+/* Image styling */
+img {
+  border: 1px solid var(--line-1) !important;
+}
+
+img.no-border {
+  border: none !important;
+}
+
+/* Layout utilities */
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+/* Animation */
+.bounce-down {
+  animation: bounce-down 2s ease infinite;
+}
+
+@keyframes bounce-down {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+/* Transform */
+.perspective {
+  transform: rotateY(-15deg);
+}
+
+/* ---------------------------------------------------------------- */
+/* Talk-specific: ForwardDeployedEngineer (workshop deck, 90 min)    */
+/* ---------------------------------------------------------------- */
+
+/* Open-question slides (①–④) and the vote */
+.question-badge {
+  display: inline-block;
+  font-size: 2.2em;
+  color: var(--frozen);
+  margin-right: 0.3em;
+  vertical-align: middle;
+}
+
+.question {
+  font-size: 1.15em;
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* Verbatim quote cards (the kickoff summary, chat bubbles) */
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border-left: 6px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.6em 1em;
+  margin: 0.4em auto;
+  text-align: left;
+  font-size: 0.75em;
+  max-width: 90%;
+}
+
+.card .meta {
+  color: #999;
+  font-size: 0.7em;
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+.bubble {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 0.5em 1em;
+  margin: 0.4em 0;
+  text-align: left;
+  font-size: 0.7em;
+  max-width: 85%;
+}
+
+.bubble .meta {
+  color: #999;
+  font-size: 0.7em;
+  display: block;
+}
+
+/* Tables */
+.reveal table.compact {
+  font-size: 0.55em;
+  margin: 0 auto;
+}
+
+.reveal table.compact th {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+.reveal table.compact td,
+.reveal table.compact th {
+  padding: 0.3em 0.6em;
+  vertical-align: top;
+}
+
+/* Case headline strip */
+.headlines {
+  font-size: 0.6em;
+  text-align: left;
+}
+
+.headlines dt {
+  color: var(--accent);
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+
+.headlines dd {
+  margin-left: 0;
+  color: white;
+}
+
+/* Checklist marks (monochrome: the brand has no red/yellow/green) */
+.ok {
+  color: var(--fg-1);
+}
+
+.half {
+  color: var(--fg-3);
+}
+
+.no {
+  color: var(--fg-4);
+}
+
+/* Case labels: three brand series, told apart by lightness too */
+.case-a {
+  color: var(--plasma);
+}
+
+.case-b {
+  color: var(--lavender);
+}
+
+.case-c {
+  color: var(--quantum);
+}
+
+/* Counter-evidence slides: darker, red accent */
+.counter {
+  border-left: 6px solid #e6194b;
+  padding-left: 0.6em;
+  text-align: left;
+  font-size: 0.65em;
+}
+
+.counter li {
+  color: #e6194b;
+}
+
+/* The loop diagram (the only diagram in the deck) */
+.loop {
+  font-size: 0.6em;
+  line-height: 1.8;
+}
+
+.loop .step {
+  display: inline-block;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  padding: 0.15em 0.5em;
+  margin: 0.15em;
+}
+
+.loop .gate {
+  border-color: #fe9f4d;
+  color: #fe9f4d;
+}
+
+.loop .arrow {
+  color: var(--accent);
+}
+
+/* Comb vs T */
+.comb {
+  font-family: monospace;
+  font-size: 0.8em;
+  color: var(--accent);
+  white-space: pre;
+  text-align: left;
+  display: inline-block;
+}
+
+/* Small print under a slide */
+.smallprint {
+  font-size: 0.45em;
+  color: #999;
+}
+
+/* Timeline with two marks */
+.timeline {
+  position: relative;
+  height: 2.2em;
+  margin: 1em 2em;
+  border-bottom: 3px solid var(--accent);
+  font-size: 0.6em;
+}
+
+.timeline .mark {
+  position: absolute;
+  bottom: -0.2em;
+  transform: translateX(-50%);
+}
+
+.timeline .mark::before {
+  content: "▲";
+  display: block;
+  color: #fe9f4d;
+}
+
+/* Two-column vote */
+.vote .column {
+  padding: 0.5em;
+}
+
+.vote h3 {
+  color: #fe9f4d;
+}
+
+/* Fragment-friendly big statement */
+.big {
+  font-size: 1.4em;
+  color: var(--accent);
+}
+
+/* ---------------------------------------------------------------- */
+/* STAGE STYLE (2026-10-15): editorial type, persistent chrome, beats */
+/* Canvas is 1920×1080 (Reveal width/height), so brand px apply 1:1.  */
+/* ---------------------------------------------------------------- */
+
+/* The stage slide: left-aligned, 120px side margin, bottom room for the footer */
+.reveal .slides section.stage {
+  text-align: left;
+  padding: 0 120px;
+  box-sizing: border-box;
+}
+
+/* Statement: Satoshi Medium, sentence case, 96px */
+.reveal .stage h2.statement {
+  font-family: var(--font-body);
+  font-size: 96px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  text-transform: none;
+  color: var(--fg-1);
+  margin: 0 0 32px 0;
+}
+
+.reveal .stage h2.statement.small {
+  font-size: 72px;
+}
+
+.reveal .stage .statement.accent,
+.reveal .stage .statement .accent {
+  color: var(--accent);
+}
+
+.reveal .stage .statement.frozen,
+.reveal .stage .statement .frozen {
+  color: var(--frozen);
+}
+
+/* Cover title: IBM Plex Sans Regular, UPPERCASE, 140px. Covers and dividers only. */
+.reveal .stage h2.cover-title {
+  font-family: var(--font-display);
+  font-size: 140px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+  text-transform: uppercase;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.reveal .stage .cover-title .accent {
+  color: var(--accent);
+}
+
+/* Eyebrow: Condensed Medium, uppercase, 0.2em tracking, Frozen Blue.
+   It is read into the chrome (top-left) and hidden here. */
+.reveal .stage p.eyebrow {
+  display: none;
+}
+
+.reveal .stage p.eyebrow {
+  font-family: var(--font-condensed);
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+  margin: 0 0 26px 0;
+}
+
+.reveal .stage p.eyebrow.muted {
+  color: var(--fg-3);
+  letter-spacing: 0.16em;
+}
+
+.reveal .stage .eyebrow .badge {
+  display: inline-block;
+  font-size: 1.6em;
+  line-height: 0;
+  vertical-align: -0.08em;
+  margin-right: 0.2em;
+}
+
+/* Lead line under a statement: Satoshi Regular 40px */
+.reveal .stage p.sub {
+  font-family: var(--font-body);
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--fg-2);
+  margin: 0 0 32px 0;
+}
+
+/* Byline: 48×2 grey rule, name in Satoshi Medium 32px, role in grey */
+.reveal .stage p.byline {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-family: var(--font-body);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--fg-3);
+  margin: 0;
+}
+
+.reveal .stage p.byline::before {
+  content: "";
+  display: inline-block;
+  width: 48px;
+  height: 2px;
+  background: var(--line-2);
+  flex: none;
+}
+
+.reveal .stage p.byline strong {
+  color: var(--fg-1);
+  font-weight: 500;
+}
+
+.reveal .stage p.byline.plain::before {
+  display: none;
+}
+
+.reveal .stage .column.photo {
+  text-align: right;
+}
+
+.reveal .stage img.no-border {
+  border: none !important;
+  border-radius: 12px;
+  filter: saturate(0.4);
+}
+
+/* GIF ⇄ logo loop (cover): the GIF plays, then dims while the logo zooms in
+   like a lens coming into focus, then the GIF comes back. .done is toggled
+   by the init script. .full fills the slide between the chrome bands. */
+.reveal .stage .gif-reveal {
+  position: relative;
+  width: 760px;
+  height: 456px;
+  margin-left: auto;
+}
+
+.reveal .stage .gif-reveal.full {
+  width: 1440px;
+  height: 864px;
+  margin: 0 auto;
+}
+
+.reveal .stage .gif-reveal.full img.after {
+  inset: 15%;
+  width: 70%;
+  height: 70%;
+}
+
+.reveal .stage .gif-reveal img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0;
+}
+
+.reveal .stage .gif-reveal img.gif {
+  filter: saturate(0.4);
+  transition: opacity 1.2s ease;
+  /* Blend into the Void: feather the edges with a gradient mask (no blur),
+     and let the GIF's blacks fall through to the background. */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 18%, #000 82%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 18%, #000 82%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  mix-blend-mode: lighten;
+}
+
+.reveal .stage .gif-reveal img.after {
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.35);
+  filter: none;
+  transition: opacity 0.6s ease; /* the way out, when the GIF comes back */
+}
+
+.reveal .stage .gif-reveal.done img.gif {
+  opacity: 0.18;
+}
+
+.reveal .stage .gif-reveal.done img.after {
+  animation: lens-in 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes lens-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Two columns with their contents vertically centred on each other (§0.2) */
+.reveal .stage .row.middle {
+  align-items: center;
+}
+
+/* The living word "ORBITANT" (§0.3, above the statement): the palette
+   sweeps through the letters. */
+.reveal .stage .orbitant-word {
+  display: inline-block;
+  margin: 0;
+}
+
+.reveal .stage .orbitant-word.above {
+  display: block;
+  margin: 0 0 40px 0;
+}
+
+.reveal .stage .orbitant-word.above .word {
+  font-size: 120px;
+}
+
+.reveal .stage .orbitant-word .word {
+  display: inline-block;
+  font-family: var(--font-display); /* IBM Plex Sans Regular, UPPERCASE: the style guide's cover face */
+  font-size: 160px;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: transparent;
+  background-image: linear-gradient(100deg, var(--plasma), var(--lavender), var(--frozen), var(--quantum), var(--plasma));
+  background-size: 400% 100%;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: palette-sweep 9s linear infinite;
+}
+
+@keyframes palette-sweep {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+.reveal .stage img.portrait {
+  height: 640px;
+  width: auto;
+  border-radius: 16px;
+  filter: saturate(0.8);
+  margin: 0;
+}
+
+/* Isologo under a statement (§0.2): brand hero height, scaled by height only */
+.reveal .stage img.logo.hero {
+  display: block;
+  height: 96px;
+  margin: 24px 0 0 0;
+}
+
+/* Logo: scaled by height only, never deformed */
+.reveal .stage img.logo,
+.chrome img.logo {
+  width: auto !important;
+  height: 56px;
+  max-width: none !important;
+  aspect-ratio: auto !important;
+  object-fit: contain !important;
+  border: none !important;
+  border-radius: 0;
+  filter: none;
+  flex: none;
+  margin: 0;
+}
+
+/* Typed statement: a cursor while typing */
+.reveal .stage .type::after {
+  content: "";
+  display: inline-block;
+  width: 0.06em;
+  height: 0.9em;
+  background: var(--accent);
+  margin-left: 0.08em;
+  vertical-align: -0.1em;
+  opacity: 0;
+}
+
+.reveal .stage .type.typing::after {
+  opacity: 1;
+  animation: blink 0.9s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Persistent chrome: slide title top-left, TRG 26 clock top-right, brand
+   footer at the bottom. The init script pins .chrome to the scaled slide
+   canvas and sets --k (Reveal's scale), so every measure below is in canvas
+   px and the chrome lines up with the slides' 120px margins exactly. */
+.chrome {
+  --k: 1;
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: calc(18px * var(--k));
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-4);
+}
+
+.chrome .left {
+  position: absolute;
+  top: calc(44px * var(--k));
+  left: calc(120px * var(--k));
+  color: var(--eyebrow);
+  letter-spacing: 0.2em;
+}
+
+.chrome .right {
+  position: absolute;
+  top: calc(44px * var(--k));
+  right: calc(120px * var(--k));
+  font-variant-numeric: tabular-nums;
+}
+
+.chrome .dot {
+  color: var(--live);
+}
+
+.chrome .footer {
+  position: absolute;
+  left: calc(120px * var(--k));
+  right: calc(120px * var(--k));
+  bottom: calc(46px * var(--k));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--fg-footer);
+  letter-spacing: 0.14em;
+}
+
+.chrome .footer img.logo {
+  height: calc(30px * var(--k));
+}
+
+/* Three pillar tiles (§0.3, §4.1): flat white cards, 1px line, 12px radius,
+   no shadow. */
+.pillars {
+  display: inline-block;
+  margin: 48px 0 0 0;
+}
+
+.pillars .tiles {
+  display: flex;
+  gap: 40px;
+}
+
+.pillars .tile {
+  border: 1px solid var(--fg-1);
+  border-radius: 12px;
+  padding: 28px 56px;
+  font-family: var(--font-body);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--fg-1);
+  min-width: 320px;
+  text-align: center;
+}
+
+/* A sticker that slams down, tilted, next to a statement (§0.3 beat 2).
+   .slam replays whenever its slide becomes the present one. */
+.reveal .stage .row.middle > h2.statement {
+  margin-bottom: 0;
+}
+
+.reveal .stage img.sticker {
+  height: 300px;
+  width: auto;
+  margin: 0 0 0 110px;
+  border: 3px solid var(--fg-1) !important; /* white frame; the PNG itself is transparent with white strokes */
+  border-radius: 6px;
+  transform: rotate(-8deg);
+  opacity: 0;
+}
+
+.reveal .stage.present .slam {
+  animation: slam-down 0.45s cubic-bezier(0.2, 1.4, 0.4, 1) 0.5s forwards;
+}
+
+@keyframes slam-down {
+  0% {
+    opacity: 0;
+    transform: rotate(-16deg) scale(2.2);
+  }
+  70% {
+    opacity: 1;
+    transform: rotate(-7deg) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-8deg) scale(1);
+  }
+}
+
+/* Rails (§2.1): a row of flat cards, label + quote. .enter rises them in one
+   by one when the slide comes up; .compact shrinks them; .gap marks what was
+   missing (dashed line); .dim fades a board under a verdict. */
+.reveal .stage .rails {
+  display: flex;
+  gap: 32px;
+  margin-top: 24px;
+  transition: opacity 0.6s ease;
+}
+
+.reveal .stage .rail {
+  flex: 1 1 0;
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+  padding: 28px 32px 24px;
+}
+
+.reveal .stage .rail .lbl {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+  margin: 0 0 14px 0;
+}
+
+.reveal .stage .rail .q {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.3;
+  color: var(--fg-1);
+  margin: 0;
+}
+
+.reveal .stage .rail .q em {
+  font-style: normal;
+  color: var(--fg-2);
+}
+
+/* Five rails in a row (§2.4): tighter type */
+.reveal .stage .rails.five {
+  gap: 24px;
+}
+
+.reveal .stage .rails.five .rail {
+  padding: 22px 24px 20px;
+}
+
+.reveal .stage .rails.five .rail .q {
+  font-size: 24px;
+}
+
+.reveal .stage .rails.five .rail .lbl {
+  font-size: 19px;
+}
+
+.reveal .stage.present .enter:nth-child(5) {
+  animation-delay: 2.7s;
+}
+
+/* Once the gaps arrive, the four practices step back: smaller and grey */
+.reveal .stage .rails.compact .rail {
+  padding: 16px 22px 14px;
+}
+
+.reveal .stage .rails.compact .rail .q {
+  font-size: 22px;
+  color: var(--fg-3);
+}
+
+.reveal .stage .rails.compact .rail .lbl {
+  font-size: 16px;
+  margin-bottom: 6px;
+  color: var(--fg-3);
+}
+
+/* The gaps: dashed line, but teal label and white text, so they carry the beat */
+.reveal .stage .rail.gap {
+  border-style: dashed;
+  border-color: var(--line-1);
+}
+
+.reveal .stage .rails.gaps {
+  margin-top: 32px;
+}
+
+.reveal .stage .dim {
+  opacity: 0.12;
+}
+
+/* Staggered entrance: only elements marked .enter, only when their slide is present */
+.reveal .stage .enter {
+  opacity: 0;
+}
+
+.reveal .stage.present .enter {
+  animation: rise-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.reveal .stage.present .enter:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.reveal .stage.present .enter:nth-child(2) {
+  animation-delay: 0.9s;
+}
+
+.reveal .stage.present .enter:nth-child(3) {
+  animation-delay: 1.5s;
+}
+
+.reveal .stage.present .enter:nth-child(4) {
+  animation-delay: 2.1s;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* The push (§2.1 beat 3): two statements on the same line; the second is a
+   custom fragment that, on click, shoots in from the right and shoves the
+   first one off the slide to the left. */
+.reveal .stage .push {
+  position: relative;
+  height: 110px;
+}
+
+.reveal .stage .push h2.statement {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.reveal .stage .push .line-b {
+  transform: translateX(1900px); /* canvas px: fully outside the 1920 canvas */
+}
+
+.reveal .stage .push .line-b.visible {
+  animation: push-in 0.55s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.reveal .stage .push .line-b.visible + .line-a {
+  animation: push-out 0.55s cubic-bezier(0.4, 0, 0.8, 0.4) forwards;
+}
+
+@keyframes push-in {
+  0% {
+    transform: translateX(1900px); /* canvas px: fully outside the 1920 canvas */
+  }
+  75% {
+    transform: translateX(-1.5%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes push-out {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-125%);
+    opacity: 0;
+  }
+}
+
+/* Metrics (§2.2): the brand's figure pair, Condensed Bold tabular */
+.reveal .stage .metrics {
+  display: flex;
+  gap: 120px;
+  margin: 16px 0 40px 0;
+}
+
+.reveal .stage .metric .value {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 120px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-1);
+  margin: 0 0 12px 0;
+}
+
+.reveal .stage .metric .label {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin: 0;
+}
+
+/* Chat message (§2.2, §2.3): rebuilt in HTML, anonymised; .type makes it type itself */
+.reveal .stage .msg {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 8px 0 32px 0;
+  max-width: 1500px;
+}
+
+.reveal .stage .msg .avatar {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  border: 1px solid var(--line-1);
+  background: var(--void);
+}
+
+.reveal .stage .msg .body {
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+  padding: 20px 28px 22px;
+}
+
+.reveal .stage .msg .meta {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  margin: 0 0 10px 0;
+}
+
+.reveal .stage .msg .text {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 1.3;
+  color: var(--fg-1);
+  margin: 0;
+  min-height: 1.3em;
+}
+
+.reveal .stage .msg.compact {
+  margin-bottom: 20px;
+}
+
+.reveal .stage .msg.compact .avatar {
+  width: 44px;
+  height: 44px;
+}
+
+.reveal .stage .msg.compact .body {
+  padding: 12px 20px 14px;
+}
+
+.reveal .stage .msg.compact .meta {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.reveal .stage .msg.compact .text {
+  font-size: 24px;
+  color: var(--fg-3);
+}
+
+/* A message that lands as if just sent (§2.3): rises from below and settles */
+.reveal .stage .msg.send {
+  opacity: 0;
+}
+
+.reveal .stage.present .msg.send {
+  animation: send-in 0.5s cubic-bezier(0.2, 1, 0.3, 1) 0.5s forwards;
+}
+
+@keyframes send-in {
+  0% {
+    opacity: 0;
+    transform: translateY(90px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* The cost chain (§2.2): chips arriving one by one after the question is typed */
+.reveal .stage .chain {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 8px;
+}
+
+.reveal .stage .chip {
+  border: 1px solid var(--line-1);
+  border-radius: 999px;
+  padding: 12px 30px;
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-1);
+}
+
+.reveal .stage .chip.accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.reveal .stage .chip + .chip::before {
+  content: "→";
+  position: relative;
+  left: -30px;
+  color: var(--fg-4);
+}
+
+.reveal .stage .chain .enter:nth-child(1) { animation-delay: 2.2s; }
+.reveal .stage .chain .enter:nth-child(2) { animation-delay: 2.7s; }
+.reveal .stage .chain .enter:nth-child(3) { animation-delay: 3.2s; }
+.reveal .stage .chain .enter:nth-child(4) { animation-delay: 3.7s; }
+.reveal .stage .chain .enter:nth-child(5) { animation-delay: 4.2s; }
+
+/* Something that enters once the typing is over, or after the chain */
+.reveal .stage.present .enter.after-type {
+  animation-delay: 4.2s;
+}
+
+.reveal .stage.present .enter.late {
+  animation-delay: 5s;
+}
+
+.reveal .stage p.verdict {
+  color: var(--fg-2);
+}
+
+/* Bad / good highlights (§2.2): the late question in Plasma, the early one in Frozen */
+.reveal .stage .msg .meta .bad,
+.reveal .stage p.verdict.bad,
+.reveal .stage p.verdict.bad strong {
+  color: var(--accent);
+}
+
+.reveal .stage .msg .meta .good,
+.reveal .stage p.verdict.good,
+.reveal .stage p.verdict.good strong {
+  color: var(--frozen);
+}
+
+.reveal .stage p.verdict strong {
+  font-weight: 500;
+}
+
+.reveal .stage p.verdict .m {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 10px;
+  vertical-align: 0.05em;
+  box-sizing: border-box;
+}
+
+.reveal .stage p.verdict.bad .m {
+  width: 18px;
+  height: 18px;
+  background:
+    linear-gradient(45deg, transparent 45%, var(--accent) 45%, var(--accent) 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, var(--accent) 45%, var(--accent) 55%, transparent 55%);
+}
+
+.reveal .stage p.verdict.good .m {
+  background: var(--frozen);
+  transform: rotate(45deg);
+}
+
+/* The compact (grey) first question keeps its highlight muted */
+.reveal .stage .msg.compact .meta .bad {
+  color: var(--fg-3);
+}
+
+/* The agent filling gaps (§2.3): three rows, one by one */
+.reveal .stage .agent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 8px;
+  max-width: 1500px;
+}
+
+.reveal .stage .fill {
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  border: 1px dashed var(--line-1);
+  border-radius: 12px;
+  padding: 18px 28px;
+  font-family: var(--font-body);
+  font-size: 34px;
+}
+
+.reveal .stage .fill .ask {
+  color: var(--fg-3);
+}
+
+.reveal .stage .fill .arrow {
+  color: var(--fg-4);
+}
+
+.reveal .stage .fill .guess {
+  color: var(--fg-1);
+  font-weight: 500;
+}
+
+.reveal .stage .fill .tag {
+  margin-left: auto;
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.reveal .stage .agent .enter:nth-child(1) { animation-delay: 0.6s; }
+.reveal .stage .agent .enter:nth-child(2) { animation-delay: 1.4s; }
+.reveal .stage .agent .enter:nth-child(3) { animation-delay: 2.2s; }
+
+/* The 7×3 checklist heatmap (§6.13), built one column per beat.
+   Marks are geometric, not emoji: filled rhombus = yes, outlined = half, cross = no. */
+.heatmap {
+  display: grid;
+  grid-template-columns: 560px repeat(3, 150px);
+  gap: 10px 20px;
+  align-items: center;
+}
+
+.heatmap .hd {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  font-size: 44px;
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--line-1);
+}
+
+.heatmap .lbl {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+}
+
+.heatmap .cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 64px;
+  border-bottom: 1px solid var(--line-2);
+  font-family: var(--font-condensed);
+  font-size: 28px;
+  color: var(--fg-4);
+}
+
+.heatmap .m {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  transform: rotate(45deg);
+  box-sizing: border-box;
+}
+
+.heatmap .m.yes {
+  background: var(--fg-1);
+}
+
+.heatmap .m.half {
+  border: 2px solid var(--fg-2);
+}
+
+.heatmap .m.no {
+  width: 22px;
+  height: 22px;
+  transform: none;
+  background:
+    linear-gradient(45deg, transparent 45%, var(--fg-4) 45%, var(--fg-4) 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, var(--fg-4) 45%, var(--fg-4) 55%, transparent 55%);
+}
+
+.heatmap.dim {
+  opacity: 0.18;
+}
+
+.reveal .stage p.verdict {
+  font-family: var(--font-body);
+  font-size: 36px;
+  font-weight: 400;
+  margin: 24px 0 0 0;
+}
+
+.reveal .stage h2.statement.overlay {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 36%;
+  margin: 0;
+}
+
+/* Word cascade (§1.1): lines rise in one after another while the slide is
+   present; --i on each li sets its turn. .big is the statement-sized version. */
+.reveal .stage ul.cascade {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.reveal .stage ul.cascade li {
+  font-family: var(--font-body);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--fg-2);
+  margin: 0;
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal .stage.present ul.cascade li {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.4s + var(--i) * 0.45s);
+}
+
+.reveal .stage ul.cascade.big li {
+  font-size: 84px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  color: var(--fg-1);
+}
+
+.reveal .stage ul.cascade li.accent {
+  color: var(--accent);
+}
+
+.reveal .stage ul.cascade.ink li {
+  color: var(--fg-1);
+}
+
+/* Horizontal cascade (§1.1 beat 2): the items sit in one row, "·" between them */
+.reveal .stage ul.cascade.inline {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.reveal .stage ul.cascade.inline li + li::before {
+  content: "·";
+  margin: 0 24px;
+  color: var(--fg-4);
+}
+
+/* .late: the cascade waits a beat before it starts */
+.reveal .stage.present ul.cascade.late li {
+  animation-delay: calc(1.4s + var(--i) * 0.5s);
+}
+
+.reveal .stage p.sub strong {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* Inside a row the portrait GIF box sits at the column's right edge */
+.reveal .stage .row .gif-reveal.tall {
+  margin: 0 0 0 auto;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A statement that has stepped back to a caption (§1.1 beat 3): 40px, regular weight */
+.reveal .stage h2.statement.tiny {
+  font-size: 40px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.2;
+  margin-bottom: 40px;
+}
+
+/* A quoted line under a statement (§1.1 beat 3): Satoshi Regular 56px, grey quote marks */
+.reveal .stage p.quote-line {
+  font-family: var(--font-body);
+  font-size: 56px;
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--fg-1);
+  margin: 0;
+  max-width: 1500px;
+}
+
+.reveal .stage p.quote-line::before {
+  content: "\201C";
+  color: var(--fg-4);
+}
+
+.reveal .stage p.quote-line::after {
+  content: "\201D";
+  color: var(--fg-4);
+}
+
+.reveal .stage p.quote-line.small {
+  font-size: 44px;
+  max-width: none;
+}
+
+.reveal .stage p.quote-line strong {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+/* Any element that rises in when the slide is present; --d sets its delay */
+.reveal .stage .rise {
+  opacity: 0;
+  transform: translateY(28px);
+}
+
+.reveal .stage.present .rise {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--d, 0.4s);
+}
+
+/* The seven criteria (§1.2): numbered rows rising in one after another;
+   Frozen numeral · white label · grey gloss, hairlines between rows */
+.reveal .stage ol.criteria {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  counter-reset: criterion;
+}
+
+.reveal .stage ol.criteria li {
+  display: grid;
+  grid-template-columns: 64px 520px 1fr;
+  column-gap: 24px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-top: 1px solid var(--hair);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal .stage ol.criteria li::before {
+  counter-increment: criterion;
+  content: counter(criterion, decimal-leading-zero);
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.12em;
+  color: var(--eyebrow);
+}
+
+.reveal .stage ol.criteria .label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 40px;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--fg-1);
+}
+
+.reveal .stage ol.criteria .gloss {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--fg-2);
+}
+
+.reveal .stage ol.criteria .gloss em {
+  font-style: italic;
+}
+
+.reveal .stage.present ol.criteria li {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.3s + var(--i) * 0.35s);
+}
+
+/* Struck-through cascade (§1.3): each line rises in, then a grey line draws
+   through it; .small.done is the stepped-back version on the next beat */
+.reveal .stage ul.cascade.struck-list li {
+  font-size: 52px;
+  line-height: 1.4;
+  color: var(--fg-1);
+}
+
+.reveal .stage .struck {
+  position: relative;
+  display: inline-block;
+}
+
+.reveal .stage .struck::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 52%;
+  height: 3px;
+  width: 0;
+  background: var(--fg-3);
+}
+
+.reveal .stage.present .struck-list li .struck::after {
+  animation: strike 0.35s ease-out forwards;
+  animation-delay: calc(1.1s + var(--i) * 0.45s);
+}
+
+.reveal .stage ul.cascade.struck-list.small li {
+  font-size: 32px;
+  line-height: 1.3;
+  color: var(--fg-3);
+}
+
+.reveal .stage ul.cascade.struck-list.small {
+  margin: 0 0 40px;
+}
+
+.reveal .stage .struck-list.done li {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.reveal .stage .struck-list.done li .struck::after {
+  animation: none;
+  width: 100%;
+}
+
+/* A single struck phrase (not in a list): .solo draws its line after --d, .static is already struck */
+.reveal .stage.present .struck.solo::after {
+  animation: strike 0.4s ease-out forwards;
+  animation-delay: var(--d, 0.8s);
+}
+
+.reveal .stage .struck.static::after {
+  width: 100%;
+}
+
+/* The struck word fades to grey as its line is drawn */
+.reveal .stage .struck.muted-word {
+  transition: color 0.4s ease;
+  transition-delay: var(--d, 0.8s);
+}
+
+.reveal .stage.present .struck.muted-word {
+  color: var(--fg-3);
+}
+
+.reveal .stage h2.statement .struck::after {
+  height: 5px;
+  top: 54%;
+}
+
+.reveal .stage h2.statement.tiny .struck::after {
+  height: 3px;
+}
+
+@keyframes strike {
+  to {
+    width: 100%;
+  }
+}
+
+.reveal .stage p.quote-line.accent {
+  color: var(--accent);
+}
+
+.reveal .stage ul.cascade + p.quote-line {
+  margin-top: 28px;
+}
+
+.reveal .stage p.quote-line.accent::before,
+.reveal .stage p.quote-line.accent::after {
+  content: none;
+}
+
+/* The comb, not the T (§1.4 beat 2): a spine with six shallow teeth growing
+   down one by one, beside a ghost T with one deep tooth. Labels in condensed. */
+.reveal .stage .row.combs {
+  align-items: flex-start;
+  gap: 140px;
+  margin-top: 48px;
+}
+
+.reveal .stage .comb-diagram {
+  flex: 0 0 auto;
+}
+
+.reveal .stage .comb-diagram .spine {
+  height: 14px;
+  background: var(--fg-1);
+  border-radius: 2px;
+}
+
+.reveal .stage .comb-diagram .teeth {
+  display: flex;
+  gap: 44px;
+  padding: 0 24px;
+}
+
+.reveal .stage .comb-diagram .tooth {
+  width: 132px;
+  height: 150px;
+  background: var(--fg-1);
+  transform: scaleY(0);
+  transform-origin: top;
+  position: relative;
+}
+
+.reveal .stage .comb-diagram .tooth span {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 16px;
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  white-space: nowrap;
+}
+
+.reveal .stage.present .comb-diagram .tooth {
+  animation: grow 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.9s + var(--i, 0) * 0.3s);
+}
+
+.reveal .stage .comb-diagram .tooth.deep {
+  height: 330px;
+}
+
+.reveal .stage .comb-diagram.ghost .spine,
+.reveal .stage .comb-diagram.ghost .tooth {
+  background: var(--fg-4);
+}
+
+.reveal .stage .comb-diagram.ghost .spine {
+  width: 420px;
+}
+
+.reveal .stage .comb-diagram.ghost .teeth {
+  justify-content: center;
+}
+
+.reveal .stage .comb-diagram.ghost .tooth span {
+  color: var(--fg-4);
+}
+
+.reveal .stage .comb-diagram .caption {
+  margin: 64px 0 0;
+  font-family: var(--font-body);
+  font-size: 30px;
+  color: var(--fg-2);
+}
+
+.reveal .stage .comb-diagram.ghost .caption {
+  margin-top: 64px;
+  color: var(--fg-4);
+}
+
+@keyframes grow {
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Wider label column (§1.5): room for a Spanish phrase on one line */
+.reveal .stage ol.criteria.wide li {
+  grid-template-columns: 64px 760px 1fr;
+}
+
+.reveal .stage p.byline + ol.criteria {
+  margin-top: 36px;
+}
+
+/* Compact criteria rows (§1.5 beat 2): the legs stepped back, grey, static */
+.reveal .stage ol.criteria.compact li,
+.reveal .stage ol.criteria.wide.compact li {
+  grid-template-columns: 48px 1fr;
+  padding: 6px 0;
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.reveal .stage ol.criteria.compact li::before {
+  font-size: 20px;
+  color: var(--fg-4);
+}
+
+.reveal .stage ol.criteria.compact .label {
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--fg-3);
+}
+
+.reveal .stage ol.criteria.compact .gloss {
+  display: none;
+}
+
+/* Text left, GIF box right (§1.6): the GIF column takes its 760px, the text the rest */
+.reveal .stage .row.gif-right > .column {
+  flex: 1 1 auto;
+  padding-right: 48px;
+}
+
+.reveal .stage .row.gif-right > .column.photo {
+  flex: 0 0 760px;
+  padding-right: 0;
+}
+
+/* A statement that has stepped back (§1.1 beat 3): grey, so the list leads */
+.reveal .stage h2.statement.muted,
+.reveal .stage h2.statement.muted .accent {
+  color: var(--fg-3);
+}
+
+/* Portrait GIF box (§1.1 beat 4): full height, centred */
+.reveal .stage .gif-reveal.tall {
+  width: 524px;
+  height: 864px;
+  margin: 0 auto;
+}
+
+/* ---------------------------------------------------------------- */
+/* PLAIN DRAFT MODE (2026-10-13): titles + unstyled paragraphs only  */
+/* Remove this block (and body.draft) after the condensation pass.   */
+/* ---------------------------------------------------------------- */
+/* Slides already condensed carry class="condensed"; the direct-child   */
+/* selectors keep the draft look on the rest.                          */
+/* :not(.stack) keeps the vertical-stack containers out of this: padding on them
+   would shift every nested slide 120px to the right. */
+.draft .reveal .slides section:not(.condensed):not(.stack) {
+  text-align: left;
+  max-height: 100%;
+  overflow-y: auto;
+  font-size: 1.25em; /* the canvas is 1920 wide now; keeps the draft legible */
+  padding: 90px 120px 120px;
+  box-sizing: border-box;
+}
+
+.draft .reveal section:not(.condensed):not(.stack) > h2 {
+  font-size: 1.1em;
+  text-transform: none;
+  margin-bottom: 0.4em;
+}
+
+.draft .reveal section:not(.condensed):not(.stack) > p {
+  font-size: 0.42em;
+  line-height: 1.35;
+  margin: 0 0 0.6em 0;
+}
+
+.draft .reveal section:not(.condensed):not(.stack) > p.question {
+  font-size: 0.6em;
+}
+
+/* ---------- §3.1 The interviews: four companies × four questions ----------
+   Rows rise in one after another (--i); the header row has no hairline.
+   .back steps the matrix back row by row (not .dim: that generic rule would hit the container) and freezes it. */
+.reveal .stage .gif-reveal.full.wide {
+  width: 1680px;
+  height: 830px; /* 320×158 source: no crop at this ratio */
+}
+
+.reveal .stage .matrix {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+  transition: opacity 0.6s ease;
+}
+
+.reveal .stage .matrix .mrow {
+  display: grid;
+  grid-template-columns: 180px repeat(4, 1fr);
+  column-gap: 28px;
+  align-items: start;
+  padding: 18px 0;
+  border-top: 1px solid var(--hair);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.reveal .stage .matrix .mrow.head {
+  border-top: none;
+  padding-bottom: 6px;
+}
+
+.reveal .stage.present .matrix .mrow {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(0.3s + var(--i) * 0.55s);
+}
+
+.reveal .stage .matrix .hd {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--eyebrow);
+}
+
+.reveal .stage .matrix .rl {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 22px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  padding-top: 4px;
+}
+
+.reveal .stage .matrix .c {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--fg-1);
+}
+
+.reveal .stage .matrix .c em {
+  font-style: normal;
+  color: var(--fg-2);
+}
+
+/* Stepped back: every row dims except the one marked .lit (the last row, under the statement) */
+.reveal .stage .matrix.back .mrow {
+  animation: none;
+  opacity: 0.14;
+  transform: none;
+  transition: opacity 0.6s ease;
+}
+
+.reveal .stage .matrix.back .mrow.lit {
+  opacity: 1;
+}
+
+/* The lit row goes Frozen Blue (teal): label and every cell */
+.reveal .stage .matrix.back .mrow.lit .rl,
+.reveal .stage .matrix.back .mrow.lit .c,
+.reveal .stage .matrix.back .mrow.lit .c em {
+  color: var(--frozen);
+}
+
+/* A stack of statements laid over a dimmed slide (§3.1 beat 4) */
+.reveal .stage .overlay-box {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 24%;
+  margin: 0;
+}
+
+.reveal .stage .overlay-box h2.statement {
+  margin-bottom: 28px;
+}
+
+/* ---------- §3.2 The lines I loved: a quote wall ----------
+   One quote big (Satoshi Medium 64px, key phrase and the opening mark in Plasma);
+   the quotes already said stack small and grey above it, numbered in Condensed.
+   Same <p data-id> on both sizes, so auto-animate morphs each line as it steps back. */
+.reveal .stage .wall {
+  position: relative;
+}
+
+.reveal .stage .wall .said {
+  margin: 0 0 40px 0;
+  counter-reset: said;
+}
+
+.reveal .stage .wall .said p {
+  position: relative;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--fg-3);
+  margin: 0 0 6px 0;
+  padding-left: 64px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.reveal .stage .wall .said p::before {
+  counter-increment: said;
+  content: counter(said, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.3em;
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  color: var(--fg-4);
+}
+
+.reveal .stage .wall .said p strong {
+  font-weight: 400;
+  color: inherit;
+}
+
+.reveal .stage .wall p.qtext {
+  position: relative;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 64px;
+  letter-spacing: -0.015em;
+  line-height: 1.12;
+  color: var(--fg-1);
+  margin: 0 0 28px 0;
+  padding-left: 64px;
+  max-width: 1680px;
+}
+
+.reveal .stage .wall p.qtext::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  top: -0.08em;
+  font-size: 1.35em;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.reveal .stage .wall p.qtext strong {
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.reveal .stage .wall p.qtext.long {
+  font-size: 54px;
+}
+
+.reveal .stage .wall p.quote-line {
+  margin: 0 0 28px 64px;
+}
+
+.reveal .stage .wall p.sub {
+  margin: 0 0 20px 64px;
+}
+
+.reveal .stage .wall p.byline {
+  margin-left: 64px;
+}
+
+/* §1.5 beat 2: the capability rows already shown on beat 1 stay put, gloss and all, no re-rise */
+.reveal .stage ol.criteria.done li {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+/* §1.5 stepping back from beat 2 to beat 1: reveal pairs the rows by identical text and pins
+   them at the opacity it read before the rise ran (0). Once paired, hold them visible. */
+.reveal .stage.present ol.criteria li[data-auto-animate-target] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* A lead line in Frozen Blue (§3.2 closer: "He had me.") */
+.reveal .stage p.sub.frozen {
+  color: var(--frozen);
+}
+
+/* Two columns aligned at their bottom edge (§3.2 closer: the GIF sits bottom right) */
+.reveal .stage .row.bottom {
+  align-items: flex-end;
+}
+
+/* The text column must be allowed to shrink, or the nowrap quote stack pushes the GIF column off the slide */
+.reveal .stage .row.bottom > .column {
+  min-width: 0;
+}
+
+/* A small GIF in the corner (§3.2 closer): 560×210, the 400×150 source's ratio */
+.reveal .stage .gif-reveal.corner {
+  width: 560px;
+  height: 210px;
+}
+
+.reveal .stage .row.bottom > .column.photo {
+  flex-basis: 560px;
+}
+
+/* ---------- §4.0 The pile ----------
+   Six screenshots fall in one by one, tilted and polaroid-framed (beat 1), then fly into three
+   pillar columns (beat 2, .sorted).
+   The .pile box is a full 1920×1080 so reveal's centring puts it at the top, and the
+   shots are positioned absolutely by --x/--y/--w. Tilt uses the individual `rotate`
+   property: reveal's auto-animate FLIP writes `transform`, so the two never fight. */
+.reveal .stage .pile {
+  position: relative;
+  height: 1080px;
+  margin: 0 -120px;
+}
+
+.reveal .stage .pile .shot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  box-sizing: border-box;
+  padding: 10px;
+  background: #f2f1ec;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  rotate: var(--r);
+  opacity: 0;
+}
+
+.reveal .stage .pile .shot .ph {
+  display: block;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.reveal .stage.present .pile .shot {
+  animation: pile-drop 0.6s cubic-bezier(0.2, 1.35, 0.4, 1) var(--d, 0s) forwards;
+}
+
+@keyframes pile-drop {
+  from {
+    opacity: 0;
+    translate: 0 -140px;
+    scale: 1.3;
+    rotate: calc(var(--r) * -2);
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    scale: 1;
+    rotate: var(--r);
+  }
+}
+
+/* Stepping back onto beat 1: paired shots hold where they landed instead of re-falling */
+.reveal .stage.present .pile:not(.sorted) .shot[data-auto-animate-target] {
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* Beat 2: upright, full opacity, three columns under a dotted Plasma thread */
+.reveal .stage .pile.sorted .shot,
+.reveal .stage.present .pile.sorted .shot {
+  opacity: 1;
+  rotate: 0deg;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+  animation: pile-settle 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pile-settle {
+  from { rotate: var(--r); }
+  to { rotate: 0deg; }
+}
+
+.reveal .stage .pile.sorted h2.statement.tiny {
+  position: absolute;
+  left: 120px;
+  top: 110px;
+  margin: 0;
+}
+
+.reveal .stage .pile .thread {
+  position: absolute;
+  left: 120px;
+  right: 120px;
+  top: 262px;
+  border-top: 3px dotted var(--plasma);
+  transform-origin: left;
+  transform: scaleX(0);
+}
+
+.reveal .stage.present .pile .thread {
+  animation: pile-thread 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+}
+
+@keyframes pile-thread {
+  to { transform: scaleX(1); }
+}
+
+.reveal .stage .pile p.pillar {
+  position: absolute;
+  left: var(--x);
+  top: 200px;
+  margin: 0;
+  font-family: var(--font-condensed);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--frozen);
+  opacity: 0;
+}
+
+.reveal .stage.present .pile p.pillar {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0.5s) forwards;
+}
+
+/* ---------- §5 And suddenly, the words ----------
+   Real Slack screenshots, one per case: the key line pulled out large (.txt) and a
+   Plasma box drawn over it in the screenshot (.hl), then the three side by side.
+   Same full-height box as §4.0's .pile so absolute --x/--y land on the slide. */
+.reveal .stage .words {
+  position: relative;
+  height: 1080px;
+  margin: 0 -120px;
+}
+
+.reveal .stage .words .txt {
+  position: absolute;
+  left: 120px;
+  top: var(--y);
+  max-width: 900px;
+}
+
+.reveal .stage .words .txt h2.statement {
+  margin-bottom: 20px;
+}
+
+.reveal .stage .words .slackshot {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: var(--w);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.reveal .stage .words .slackshot .ph {
+  display: block;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.reveal .stage .words .slackshot .hl {
+  position: absolute;
+  left: var(--l);
+  top: var(--t);
+  width: var(--w);
+  height: var(--h);
+  box-sizing: border-box;
+  border: 4px solid var(--plasma);
+  border-radius: 10px;
+  background: rgba(69, 103, 237, 0.08);
+  opacity: 0;
+  transform: scale(1.15);
+}
+
+.reveal .stage.present .words .slackshot .hl {
+  animation: hl-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 1s) forwards;
+}
+
+@keyframes hl-in {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.reveal .stage .words p.case {
+  position: absolute;
+  left: var(--x);
+  top: 300px;
+  margin: 0;
+  font-family: var(--font-condensed);
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  color: var(--frozen);
+  opacity: 0;
+}
+
+.reveal .stage.present .words p.case {
+  animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) var(--d, 0.6s) forwards;
+}
+
+.reveal .stage .words .txt.wide {
+  max-width: none;
+  white-space: nowrap;
+}
+
+/* ---------- §4.0b The initiatives ----------
+   One beat per initiative: Frozen pillar tag + statement + a list rising line by line
+   on the left, that initiative's screenshot from the pile on the right (same data-id,
+   so the first one flies out of the sorted pile). */
+.reveal .stage .init {
+  display: grid;
+  grid-template-columns: 1fr 560px;
+  gap: 80px;
+  align-items: center;
+}
+
+.reveal .stage .init p.tag {
+  font-family: var(--font-condensed);
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--frozen);
+  margin: 0 0 16px;
+}
+
+.reveal .stage .init h2.statement.small {
+  margin-bottom: 36px;
+}
+
+.reveal .stage .init ul.cascade.list {
+  columns: 2;
+  column-gap: 56px;
+  margin: 0;
+}
+
+.reveal .stage .init ul.cascade.list.one {
+  columns: 1;
+}
+
+.reveal .stage .init ul.cascade.list li {
+  font-size: 34px;
+  line-height: 1.25;
+  color: var(--fg-1);
+  margin: 0 0 14px;
+  break-inside: avoid;
+}
+
+.reveal .stage .init ul.cascade.list li.accent {
+  color: var(--accent);
+}
+
+.reveal .stage .init ul.cascade.list li strong {
+  font-weight: 500;
+  color: var(--frozen);
+}
+
+.reveal .stage .init .pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+
+.reveal .stage .init p.head {
+  font-family: var(--font-body);
+  font-size: 26px;
+  color: var(--fg-3);
+  margin: 0 0 18px;
+}
+
+.reveal .stage .init .counts {
+  display: flex;
+  gap: 64px;
+  margin: 0 0 36px;
+}
+
+.reveal .stage .init .counts p {
+  margin: 0;
+  font-family: var(--font-condensed);
+  font-size: 26px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+}
+
+.reveal .stage .init .counts .n {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 84px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--frozen);
+  text-transform: none;
+}
+
+.reveal .stage .init p.quote-line.small {
+  margin: 0 0 32px;
+}
+
+.reveal .stage .init p.verdict-line {
+  font-family: var(--font-body);
+  font-size: 34px;
+  color: var(--fg-2);
+  margin: 28px 0 0;
+}
+
+.reveal .stage .init .shot {
+  justify-self: center;
+  width: var(--sw, 560px);
+  box-sizing: border-box;
+  padding: 10px;
+  background: #f2f1ec;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  rotate: var(--r, 0deg);
+}
+
+.reveal .stage .init .shot .ph {
+  display: block;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.reveal .stage .init p.verdict-line {
+  font-size: 30px;
+  white-space: nowrap;
+}
+
+.reveal .stage .init p.verdict-line .accent {
+  color: var(--accent);
+}
+
+/* ---------- §6.A Case A · The cowboy ----------
+   A.1: the demo GIF is 2.5:1 and its "DEMO" word sits at the right edge, so a wider
+   box and a softer feather than .full; no desaturation. A.2 reuses §5's .words /
+   .slackshot / .hl; .seen is a screenshot already shown, small and grey. Beat 2 is three §1.2 rows (.blockers); the
+   reconstructed Slack message on beat 3 is .slackmock (white, Slack's own type). A.3: §1.2's rows with
+   the gloss replaced by a mark and two words (.scored). */
+.reveal .stage .gif-reveal.full.cine {
+  width: 1700px;
+  height: 680px;
+}
+
+.reveal .stage .gif-reveal.cine img.gif {
+  max-width: none;
+  max-height: none;
+  filter: none;
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 6%, #000 96%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 6%, #000 96%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 10%, #000 90%, transparent 100%);
+}
+
+.reveal .stage .words .slackshot.seen {
+  opacity: 0.3;
+  filter: grayscale(1);
+}
+
+.reveal .stage ol.criteria.scored li {
+  grid-template-columns: 64px 560px 72px 1fr;
+  align-items: center;
+}
+
+.reveal .stage ol.criteria.scored .m {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  box-sizing: border-box;
+  transform: rotate(45deg);
+}
+
+.reveal .stage ol.criteria.scored .m.yes {
+  background: var(--frozen);
+}
+
+.reveal .stage ol.criteria.scored .m.half {
+  border: 3px solid var(--fg-2);
+}
+
+.reveal .stage ol.criteria.scored .m.no {
+  width: 26px;
+  height: 26px;
+  transform: none;
+  background:
+    linear-gradient(45deg, transparent 44%, var(--fg-4) 44%, var(--fg-4) 56%, transparent 56%),
+    linear-gradient(-45deg, transparent 44%, var(--fg-4) 44%, var(--fg-4) 56%, transparent 56%);
+}
+
+.reveal .stage ol.criteria.scored .why {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 34px;
+  color: var(--fg-2);
+}
+
+.reveal .stage ol.criteria.blockers li {
+  grid-template-columns: 64px 360px 1fr;
+}
+
+.reveal .stage .slackmock {
+  display: flex;
+  align-items: flex-start;
+  gap: 22px;
+  width: 1500px;
+  margin: 8px 0 36px 0;
+  padding: 26px 34px 30px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+  font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1d1c1d;
+}
+
+.reveal .stage .slackmock img.av {
+  flex: none;
+  width: 86px;
+  height: 86px;
+  margin: 4px 0 0 0;
+  border-radius: 14px;
+}
+
+.reveal .stage .slackmock p {
+  margin: 0;
+  text-align: left;
+}
+
+.reveal .stage .slackmock .who {
+  font-size: 34px;
+  line-height: 1.3;
+}
+
+.reveal .stage .slackmock .who b {
+  font-weight: 900;
+}
+
+.reveal .stage .slackmock .who span {
+  margin-left: 10px;
+  font-size: 27px;
+  color: #616061;
+}
+
+.reveal .stage .slackmock .txt {
+  font-size: 36px;
+  line-height: 1.4;
+}
+
+/* ---------- §6.B Case B · The app we made for him ----------
+   Reuses §6.A (.cine, .slackmock, ol.criteria.blockers/.scored) and §5's .words/.slackshot.
+   The Nexxo screenshots rise in on beat 1 and, when paired by auto-animate on the way back, simply hold visible. */
+.reveal .stage.present .words.nexxo .slackshot.rise[data-auto-animate-target] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ---------- §6.C Case C · The client is us ----------
+   .slackmock.small fits two messages and a chip row on one beat; .mention is Slack's @-mention. */
+.reveal .stage .slackmock.small {
+  margin-bottom: 22px;
+  padding: 18px 28px 20px;
+}
+
+.reveal .stage .slackmock.small img.av {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+}
+
+.reveal .stage .slackmock.small .who {
+  font-size: 26px;
+}
+
+.reveal .stage .slackmock.small .who span {
+  font-size: 21px;
+}
+
+.reveal .stage .slackmock.small .txt {
+  font-size: 28px;
+}
+
+.reveal .stage .slackmock .mention {
+  padding: 0 4px;
+  border-radius: 4px;
+  color: #1264a3;
+  background: rgba(29, 155, 209, 0.1);
+}
+
+/* §6.C revisions: .std is a cine box at the DiCaprio GIF's own 480×292 ratio (no crop of the
+   "DEMO" by the finger); .cshot is a plain screenshot card in the flow (not .shot: §4 owns that name). */
+.reveal .stage .gif-reveal.full.cine.std {
+  width: 1300px;
+  height: 790px;
+}
+
+.reveal .stage .cshot {
+  width: 1500px;
+  margin: 0 0 22px 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+}
+
+.reveal .stage .cshot .ph {
+  display: block;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* §6.C.2 FredCon beat: four one-word decisions, so a narrow label column and a larger gloss */
+.reveal .stage ol.criteria.blockers.dec li {
+  grid-template-columns: 64px 200px 1fr;
+}
+
+.reveal .stage ol.criteria.blockers.dec .gloss {
+  font-size: 32px;
+}
+
+/* §6.A design beat: the designer's line, grey under the engineer's */
+.reveal .stage p.quote-line.muted {
+  color: var(--fg-3);
+  margin-top: 32px;
+}
+
+.reveal .stage p.quote-line + p.byline {
+  margin-top: 10px;
+}
+
+/* §7.2 the new senior title, word by word, each word dropping onto its pillar */
+.reveal .stage .jd {
+  display: flex;
+  gap: 52px;
+  align-items: flex-start;
+  margin: 0 0 40px 0;
+}
+
+.reveal .stage .jd .jw {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reveal .stage .jd .w {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 104px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--fg-1);
+  margin: 0 0 6px 0;
+  transition: color 0.5s ease;
+}
+
+.reveal .stage .jd .jw.lit .w {
+  color: var(--accent);
+}
+
+.reveal .stage .jd .jw.off .w {
+  color: var(--fg-4);
+}
+
+.reveal .stage .jd .p {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+  margin: 0;
+}
+
+.reveal .stage .jd .g {
+  font-family: var(--font-body);
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--fg-2);
+  margin: 0;
+  max-width: 380px;
+}
+
+.reveal .stage .jd .jw.off .p,
+.reveal .stage .jd .jw.off .g {
+  color: var(--fg-4);
+}
+
+.reveal .stage .jd.small {
+  gap: 40px;
+}
+
+.reveal .stage .jd.small .w {
+  font-size: 64px;
+}
+
+.reveal .stage .jd.small .p {
+  font-size: 20px;
+}
+
+/* §9.3 fence vs meter: two rails, the second line of each in grey */
+.reveal .stage .rails.duel .rail .q + .q {
+  margin-top: 18px;
+}
+
+.reveal .stage .rails.duel .rail .q {
+  font-size: 34px;
+}
+
+.reveal .stage .rails.duel.compact .rail .q {
+  font-size: 28px;
+  color: var(--fg-2);
+}
+
+/* §10.2–10.3 the sheet: a grid of flat cells, heading in Frozen Condensed */
+.reveal .stage .sheet {
+  display: grid;
+  gap: 20px;
+  width: 1680px;
+}
+
+.reveal .stage .sheet.a {
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: auto;
+}
+
+.reveal .stage .sheet.a .cell.tall {
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+.reveal .stage .sheet.b {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.reveal .stage .sheet .cell {
+  border: 1px solid var(--line-1);
+  border-radius: 12px;
+  padding: 24px 28px 22px;
+  text-align: left;
+}
+
+.reveal .stage .sheet .cell .h {
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 20px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--eyebrow);
+  margin: 0 0 14px 0;
+}
+
+.reveal .stage .sheet .cell .l {
+  font-family: var(--font-body);
+  font-size: 27px;
+  line-height: 1.3;
+  color: var(--fg-1);
+  margin: 0 0 8px 0;
+}
+
+.reveal .stage .sheet .cell .l.accent {
+  color: var(--accent);
+}
+
+.reveal .stage .sheet .cell .l.q {
+  color: var(--fg-2);
+  font-size: 24px;
+}
+
+.reveal .stage .sheet.b .cell .l {
+  font-size: 25px;
+}
+
+/* §10.4 the daily check: numbered rows, the question alone */
+.reveal .stage ol.criteria.daily li {
+  grid-template-columns: 64px 1fr;
+  padding: 14px 0;
+}
+
+.reveal .stage ol.criteria.daily .label {
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.reveal .stage .rails.duel.compact .rail .lbl {
+  font-size: 20px;
+  color: var(--eyebrow);
+}
+
+/* §9.4 a sub after a byline needs air; its accent span in Plasma */
+.reveal .stage p.byline + p.sub {
+  margin-top: 36px;
+}
+
+.reveal .stage p.sub .accent {
+  color: var(--accent);
+}
+
+/* §7.1b the engineer of the near future: one headline, as big as it gets */
+.reveal .stage h2.statement.huge {
+  font-size: 200px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+/* §10.1 The sheet (2026-10-19): statement left, the three A4 pages of cheat-sheet.pdf
+   fanned on the right (paper cards like §4's .shot, own names: §4 owns .shot). Beat 2
+   pairs the pages by data-id, so auto-animate slides and shrinks them while the deck URL
+   and the PDF path rise on the left. */
+.reveal .stage .handout {
+  display: grid;
+  grid-template-columns: 1fr 700px;
+  gap: 60px;
+  align-items: center;
+}
+
+.reveal .stage .handout .pages {
+  position: relative;
+  height: 760px;
+}
+
+.reveal .stage .handout .pg {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 400px;
+  aspect-ratio: 760 / 1076;
+  background-color: #fff;
+  background-size: cover;
+  background-position: top center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+  rotate: var(--r);
+}
+
+.reveal .stage.present .handout .pages:not(.small) .pg:not([data-auto-animate-target]) {
+  opacity: 0;
+  animation: pile-drop 0.6s cubic-bezier(0.2, 1.35, 0.4, 1) var(--d, 0s) forwards;
+}
+
+.reveal .stage .handout .pages.small {
+  height: 560px;
+}
+
+.reveal .stage .handout .pages.small .pg {
+  width: 300px;
+}
+
+.reveal .stage .handout p.where-label {
+  font-family: var(--font-condensed);
+  font-size: 26px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--frozen);
+  margin: 44px 0 10px;
+}
+
+.reveal .stage .handout p.url {
+  font-family: var(--font-condensed);
+  font-size: 54px;
+  line-height: 1.15;
+  color: var(--fg-1);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.reveal .stage .handout p.url a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 2px solid currentColor;
+}
+
+/* §0.2 socials: LinkedIn + GitHub under the isologo */
+.reveal .stage ul.socials {
+  list-style: none;
+  margin: 48px 0 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.reveal .stage ul.socials li {
+  margin: 0;
+  padding: 0;
+}
+.reveal .stage ul.socials li::before { content: none; }
+.reveal .stage ul.socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--ink-2);
+  font-family: var(--font-condensed);
+  font-weight: 500;
+  font-size: 34px;
+  text-decoration: none;
+}
+.reveal .stage ul.socials svg {
+  width: 40px;
+  height: 40px;
+  flex: none;
+  color: var(--ink);
+}
